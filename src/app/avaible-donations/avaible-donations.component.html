@@ -1,0 +1,22 @@
+<!-- <nav></nav> -->
+
+<div class="container">
+    <div class="row box">
+      <div class="col s12 center-align">
+        <div class="row">
+            <h5>{{mainTitle}}</h5>
+            <div class="col s6 push-s3 hr"></div>
+        </div>
+        <div class="row">
+
+          <!-- for element -->
+          <div *ngFor="let donation of donations; let i = index">
+            <div class="col center-align s6 m3 l2">
+              <app-cause [donations]="donation" ></app-cause>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<button class="btn waves-effect waves-light modal-trigger" data-target="modal1">Create a donation request</button>
+
+<div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+    <div class="modal-content container">
+      <div class="row center-align">
+        <h4>Donation Request</h4>
+        <div class="hr"></div>
+      </div>
+      <div class="row">
+        <h6>For whom are you making a request ?</h6>
+      </div>
+      <div class="row">
+          <div class="col m6">
+            <p>
+              <input (click)="changePlaceholderHospital()" type="checkbox" id="Hospital" [checked]="hospitalClicked" [disabled]="hospitalDisable"/>
+              <label for="Hospital">Hospital</label>
+            </p>
+          </div>
+          <div class="col m6">
+            <p>
+              <input (click)="changePlaceholderPatient()" type="checkbox" id="Patient" [disabled]="patientDisable"/>
+              <label for="Patient">Patient</label>
+            </p>
+          </div>
+      </div>  
+        <div class="row">
+            <form class="col s12" [formGroup]="createDonationForm" (ngSubmit)="createRequest()">
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">{{usedIcon}}</i>
+                  <input id="icon_prefix2" formControlName="name" type="text">
+                  <label for="icon_prefix2">{{namePlaceholder}}</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">invert_colors</i>
+                  <input id="icon_prefix4" formControlName="bloodType" type="text">
+                  <label for="icon_prefix4">Blood Type</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">format_color_fill</i>
+                  <input id="icon_prefix3" formControlName="requestedQuantity" type="text">
+                  <label for="icon_prefix3">Requested Quantity</label>
+                </div>
+
+                <div class="col s12 m6">
+                  <p> {{status}} </p>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+                
+
+    </div>
+    <div class="modal-footer">
+      <button class=" modal-action modal-close  waves-effect waves-light btn">Cancel</button>
+      <button class=" waves-effect waves-light btn" (click)="createRequest()">Submit</button>
+    </div>
+  </div>

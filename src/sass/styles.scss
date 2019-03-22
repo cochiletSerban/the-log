@@ -1,0 +1,74 @@
+@import './vars';
+@import './hr';
+@import './nav';
+@import './box';
+@import './header';
+
+html, body {
+   height: 100%;
+}
+
+
+
+/* sets global color palette
+   #A6E275 light
+   #7EC146
+   #61AA25
+   #2E6500 dark
+*/
+
+nav, button  {
+  background-color:$dark-red !important;
+}
+
+.btn:hover {
+  background-color:$light-red !important;
+}
+
+i {
+ color:$light-red !important;
+}
+
+.tabs .tab a {
+  color:$dark-red;
+}
+
+.tabs .tab a.active {
+  color:$light-red;
+}
+
+.tabs .indicator {
+  background-color: $dark-red;
+}
+
+.tabs.tabs-fixed-width {
+  // box-shadow: none;
+  // background-color:#EEEEEE;
+  // border-top:2px solid $dark-red;
+}
+
+
+.btn {
+  text-transform:capitalize;
+}
+
+
+.backbtn {
+  @extend .btn;
+  font-size: 175%;
+  border: none;
+}
+
+.centered-btn {
+  @extend .btn;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.modal {
+  max-height: 80%; // modify the modal height
+}
+.modal-content {
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}

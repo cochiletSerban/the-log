@@ -1,0 +1,42 @@
+<!-- top bar -->
+<div class="bar"></div>
+
+<!-- image slider -->
+<div class="slider fullscreen" materialize="slider" [materializeParams]="[{fullWidth: true,indicators:false}]" *ngIf="bgs.url.length > 2">
+  <ul class="slides">
+    <li class="bgFix"  *ngFor = "let i of bgs.url" [ngStyle]="{ 'background-image': 'url(' + i + ')'}"></li>
+  </ul>
+</div>
+
+
+<!-- valign container -->
+<div class="valign-wrapper row centerContainer" id="id">
+
+  <div class="col s12 center-align">
+
+    <!-- logo -->
+    <div class="row">
+      <div class="col s12">
+        <img src="../../assets/img/logo.png" class="responsive-img logo animated" >
+      </div>
+    </div>
+    <!-- description (under logo) -->
+    <div class="row">
+      <div class="col s12 ">
+        <h5 class="shadow" >
+          <i fa [name]="'tint'" [size]=1 #fa1></i>
+          Make a difference and donate today...
+          <i fa [name]="'tint'" [size]=1 #fa2></i>
+        </h5>
+      </div>
+    </div>
+    <!-- button -->
+    <div class="row ">
+      <div class="col s12 ">
+        <button [routerLink]="['/login']" routerLinkActive="router-link-active"  class="waves-effect waves-light btn getStarted" (mouseenter)="onHo(true)" (mouseleave)="onHo(false)">
+          <h5>Donate Now!</h5>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@import '../../sass/vars';
+@import '../../sass/hr';
+@import '../../sass/box';
+
+.box {
+    @extend %box;
+    padding: 10px;
+}
+
+.col {
+    padding: 0;
+}

@@ -1,0 +1,15 @@
+@import '../../sass/vars';
+
+.logoutButton {
+    height:56px;
+    box-shadow: none !important;
+    border: 2px solid $light-red !important;
+    float: right;
+}
+
+nav {
+    height:56px;
+    padding-right: 10px;
+    position: fixed;
+    z-index: 1;
+}

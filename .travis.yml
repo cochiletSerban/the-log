@@ -1,0 +1,24 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - "8.11.3"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - travis_wait 30 npm install -g firebase-tools
+  - travis_wait 30 npm install -g @angular/cli
+
+script:
+  - travis_wait 30 ng build --prod
+
+after_success:
+  - firebase deploy --token $firebaseToken
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change

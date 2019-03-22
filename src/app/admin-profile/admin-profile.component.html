@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="header">
+  <div class="row">
+    <div class="col center-align s12">
+      <!-- picture  col -->
+      <div class="col s12">
+        <img src="../../assets/img/tools.png" class="responsive-img" width="100px;" alt="">
+      </div>
+      <div class="col s12">
+        <div class="col s12">
+          <h3>Administrator</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <form [formGroup]="doctorsForm" (ngSubmit)="onSubmit()" *ngIf="doctorsForm">
+    <div formArrayName="doctors">
+        <ul class="collection" *ngFor="let doctor of doctors; let i = index">
+          <li class="collection-avatar doc">
+                <img src="../../assets/img/cross.png" alt="" class="circle" style="width:20px;">
+                <span class="title" style="font-size: 25px;">Doctor</span>
+                <div class="switch" style="float: right;">
+                    <label>Off
+                      <input type="checkbox" [formControlName]="i" [id]="i">
+                        <span class="lever"></span>On
+                    </label>
+                </div>
+                <br>
+                <span>
+                  {{doctor}}
+                </span>
+          </li>
+        </ul>
+      </div>
+      <button type="submit" class="btn btn-light centered-btn" >Submit</button>
+    </form>
+  </div>

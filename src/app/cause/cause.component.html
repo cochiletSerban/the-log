@@ -1,0 +1,39 @@
+
+<div class="cont">
+    <div class="wrapper" (click)="openModal()">
+        <img src="../../assets/img/bloodBag.png" width="140" id="bag" alt="">
+        <img src="../../assets/img/blood.png" width="140" id="blood" alt="" #blood [style.transform]="'scaleY(' + procent +')'" >
+        <div class="tag center-align">
+           {{donations.name}}
+           <div class="hr"></div>
+           Needs {{donations.requested_quantity-donations.existing_quantity}}L more blood, type {{donations.blood_type}}
+        </div>
+    </div>
+
+    <button *ngIf="checkDonor()" class="btn waves-effect waves-light" (click)="triggerToast()">Donate</button>
+
+    <div id="modal" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+
+      <div class="modal-content">
+        <h4>{{donations.name}}</h4>
+        <div class="hr"></div>
+        <p>Has {{donations.existing_quantity}}L of blood
+          and needs {{donations.requested_quantity}}L more blood, type {{donations.blood_type}}
+        </p>
+        <p>There were {{donations.donations_count}} donations until now</p>
+        <p>Donation requested on {{donations.creation_date.date | date:'dd/MM/yyyy' }}</p> 
+        <p *ngIf="donations.last_donation_date !== null">
+          Last donation: {{donations.last_donation_date.date | date:'dd/MM/yyyy' }}
+        </p>
+      </div>
+<!-- | date:'dd/MM/yyyy' -->
+      <div class="modal-footer">
+        <button class=" waves-effect waves-light btn" (click)="closeModal()">Cancel</button>
+        <!-- <button class="modal-action modal-close waves-effect  waves-light btn">Help and donate</button> -->
+        <button  *ngIf="checkDonor()" class="btn modal-action modal-close waves-effect  waves-light btn" (click)="triggerToast()">Help and Donate</button>
+      </div>
+
+    </div>
+</div>
+
+<!--  -->

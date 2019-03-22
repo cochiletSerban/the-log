@@ -1,0 +1,57 @@
+@import '../../sass/vars';
+@import '../../sass/header';
+@import '../../sass/box';
+@import '../../sass/hr';
+
+
+.box {
+    @extend %box;
+    padding: 10px;
+}
+
+.col {
+    padding:0;
+    margin: 0;
+}
+
+.large {
+    font-size: 8rem;
+}
+
+
+
+h3 {
+    margin: 10px;
+
+}
+
+.row {
+    margin: 0;
+}
+
+.tabs {
+  overflow: hidden;
+}
+
+.hr {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+
+.tolo {
+    background-color: rgba(1,1,1,0.5);
+    height: 500px;
+}
+
+#bloodWork, #donationHistory {
+    margin-top: 10px;
+}
+
+
+
+.width {
+    width: 100%;
+}
+

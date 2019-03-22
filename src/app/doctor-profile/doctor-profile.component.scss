@@ -1,0 +1,9 @@
+@import '../../sass/vars';
+@import '../../sass/header';
+@import '../../sass/hr';
+
+
+
+.modal.bottom-sheet {
+    min-height: 50%; // modify the modal height
+}

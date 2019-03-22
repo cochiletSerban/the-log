@@ -1,0 +1,61 @@
+@import '../../sass/box';
+@import '../../sass/vars';
+
+#blood {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top:0;
+    transform-origin:0 40px;
+    // transform: scaleY(0);
+    transition: all .5s;
+}
+
+#bag {
+    display: block;
+    top:0;
+    position: absolute;
+    z-index: 2;
+}
+
+.wrapper {
+    width:140px;
+    height: 250px;
+    position: relative;
+
+}
+
+.tag {
+    @extend %box;
+    position: absolute;
+    z-index: 3;
+    top:90px;
+    opacity:0.8;
+    left:0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.cont {
+
+}
+
+.modal.bottom-sheet {
+    max-height: 80%; // modify the modal height
+}
+
+.cont {
+    // border: 2px solid red;
+    width:140px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.wrapper:hover ~ .btn {
+    background-color: $light-red!important;
+}
+
