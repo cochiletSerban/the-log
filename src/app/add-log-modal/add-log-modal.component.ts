@@ -24,9 +24,12 @@ export class AddLogModalComponent implements OnInit {
 
   ngOnInit() {
     this.modalActions.subscribe(res => {
-      console.log(res.params[1]);
 
-      if (res.params[1] === undefined) { /////////// ?
+      if (res.params[0] === 'open') {
+        return;
+      }
+
+      if (res.params[1] !== 'success') { /////////// ?
         Materialize.toast('There was a error: ' + res.params[1] , 4000);
         return;
       }
@@ -43,7 +46,7 @@ export class AddLogModalComponent implements OnInit {
     this.logForm.reset();
   }
 
-  closeModal(param = '') {
+  closeModal(param = null) {
     this.modalActions.emit({ action: 'modal', params: ['close', param] });
   }
 

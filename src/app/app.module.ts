@@ -27,6 +27,7 @@ import { GetUserDataService } from './services/get-user-data.service';
 import { AddLogModalComponent } from './add-log-modal/add-log-modal.component';
 import { EntryComponent } from './entry/entry.component';
 import { EntryService } from './services/entry.service';
+import { FeedComponent } from './feed/feed.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'doctor-profile', component: DoctorProfileComponent },
   { path: 'avaible-donations', component: AvaibleDonationsForUserComponent },
-  { path: 'admin-profile', component : AdminProfileComponent }
+  { path: 'admin-profile', component : AdminProfileComponent },
+  { path: 'feed', component : FeedComponent }
 ];
 
 @NgModule({
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     AdminProfileComponent,
     NavBarComponent,
     AddLogModalComponent,
-    EntryComponent
+    EntryComponent,
+    FeedComponent
   ],
   imports: [
     MaterializeModule,

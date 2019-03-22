@@ -8,23 +8,91 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class EntryService {
 
-  private entryAddedSource = new Subject <Entry>();
-  entryAdded$ = this.entryAddedSource.asObservable();
+  private privateEntryAddedSource = new Subject <Entry>();
+  privateEntryAdded$ = this.privateEntryAddedSource.asObservable();
+
+  private feedEntryAddedSource = new Subject <Entry>();
+  feedEntryAdded$ = this.feedEntryAddedSource.asObservable();
+
+  private publicEntries: Array<Entry> = [
+    {
+      logTitle: 'ent1',
+      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
+      Consequaturasdf sapiente incidunt voluptate iste laudantium vitae
+      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
+      logTags: 'sefu, yolo'
+    },
+    {
+      logTitle: 'ent2',
+      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
+      Consequatur sapiente iasdfasdncidunt voluptate iste laudantium vitae
+      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
+      logTags: 'sefu, yolo'
+    },
+    {
+      logTitle: 'ent3',
+      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
+      Consequatur sapiente sdfaincidunt voluptate iste laudantium vitae
+      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
+      logTags: 'sefu, yolo'
+    },
+    {
+      logTitle: 'ent4',
+      logContent: `Lorem ipsumasd dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
+      Consequatur sapiente incidunt voluptate iste laudantium vitae
+      nobis nemo quaeratasd, eius accusamus ullam quidem? Quo, cupiditate?`,
+      logTags: 'sefu, yolo'
+    },
+    {
+      logTitle: 'ent5',
+      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
+      Consequatur sapasdfiente incidunt voluptate iste laudantium vitae
+      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
+      logTags: 'sefu, yolo'
+    },
+  ];
+
 
   constructor(private router: Router) { }
 
   addEntry(entry: Entry) {
+
     if (this.router.url === '/user-profile') {
-      console.log("adding to private logs " + entry);
-      this.updateEntryList(entry);
+
+      console.log('adding to private logs ' + entry);
+      this.updateEntryList(entry, 'private');
+
       return of(entry).delay(100);
+
     } else {
-      console.log("adding logs to feed " + entry);
+
+      this.updateEntryList(entry, 'feed');
+      console.log('adding logs to feed ' + entry);
+
       return of(entry).delay(100);
     }
   }
 
-  updateEntryList(entry: Entry) {
-    this.entryAddedSource.next(entry);
+  updateEntryList(entry: Entry, type) {
+    if (type === 'private') {
+      this.privateEntryAddedSource.next(entry);
+    } else {
+      this.feedEntryAddedSource.next(entry);
+    }
   }
+
+  getPublicEntries() {
+    return of (this.publicEntries).delay(100);
+  }
+
+  getPrivateEntries() {
+    return of (this.publicEntries.slice(0.3)).delay(100);
+  }
+
+  getAllEntries() {
+    return of (this.publicEntries.concat(this.publicEntries)).delay(100);
+  }
+
+
+
 }

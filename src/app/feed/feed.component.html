@@ -1,0 +1,16 @@
+
+<div class="container">
+  <div class="row center-align">
+      <div class="col s12 m12">
+        <div class="row">
+          <h5>Latest Board Entires</h5>
+          <div class="hr"></div>
+        </div>
+        <div class="row">
+            <app-entry *ngFor="let entry of allEntries" [entry]="entry"></app-entry>
+        </div>
+
+        <app-add-log-modal></app-add-log-modal>
+    </div>
+  </div>
+</div>

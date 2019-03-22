@@ -12,48 +12,11 @@ declare var $: any;
 export class UserProfileComponent implements OnInit {
   name: string;
   currentTab = 'feed';
-
-  publicEntries: Array<Entry> = [
-    {
-      logTitle: 'ent1',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequaturasdf sapiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
-    },
-    {
-      logTitle: 'ent2',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente iasdfasdncidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
-    },
-    {
-      logTitle: 'ent3',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente sdfaincidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
-    },
-    {
-      logTitle: 'ent4',
-      logContent: `Lorem ipsumasd dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaeratasd, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
-    },
-    {
-      logTitle: 'ent5',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapasdfiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
-    },
-  ];
-  privateEntries = this.publicEntries.slice(0, 3);
+  privateEntries: Array<Entry>;
+  publicEntries: Array<Entry>;
 
   constructor(private entryService: EntryService) {
-    entryService.entryAdded$.subscribe(entry => {
+    entryService.privateEntryAdded$.subscribe(entry => {
       this.privateEntries.push(entry);
     });
   }
@@ -61,6 +24,8 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     $('.tabs').tabs();
     this.name = localStorage.getItem('username');
+    this.entryService.getPublicEntries().subscribe(entries => this.publicEntries = entries);
+    this.entryService.getPrivateEntries().subscribe(entries => this.privateEntries = entries);
   }
 }
 
