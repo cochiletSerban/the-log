@@ -9,6 +9,7 @@ declare var $: any;
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+
 export class UserProfileComponent implements OnInit {
   name: string;
   currentTab = 'feed';
