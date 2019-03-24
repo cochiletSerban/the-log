@@ -1,4 +1,6 @@
 @import './vars';
+@import "~materialize-css/sass/materialize";
+
 @import './hr';
 @import './nav';
 @import './box';
@@ -8,8 +10,6 @@ html, body {
    height: 100%;
 }
 
-
-
 /* sets global color palette
    #A6E275 light
    #7EC146
@@ -18,27 +18,11 @@ html, body {
 */
 
 nav, button  {
-  background-color:$dark-red !important;
+  //background-color:$dark-red !important;
 }
 
 .btn:hover {
-  background-color:$light-red !important;
-}
-
-i {
- color:$light-red !important;
-}
-
-.tabs .tab a {
-  color:$dark-red;
-}
-
-.tabs .tab a.active {
-  color:$light-red;
-}
-
-.tabs .indicator {
-  background-color: $dark-red;
+  //background-color:$light-red !important;
 }
 
 .tabs.tabs-fixed-width {

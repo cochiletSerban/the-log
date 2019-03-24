@@ -1,6 +1,5 @@
-<button  id="addLog" class="btn-floating btn-large waves-effect waves-light red" (click)="openModal()"><i class="material-icons">add</i></button>
-<div id="modal" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]"
-  [materializeActions]="modalActions">
+<button  id="addLog" class="btn-floating btn-large waves-effect waves-light modal-trigger"  data-target="modal" (click)="openModal()"><i class="material-icons">add</i></button>
+<div id="modal" class="modal"  >
 
   <div class="modal-content">
     <div class="container">

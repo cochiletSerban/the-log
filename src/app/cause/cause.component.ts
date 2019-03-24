@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Renderer2, ElementRef, ViewChild, EventEmitter, Input } from '@angular/core';
-import { MaterializeDirective, MaterializeAction } from 'angular2-materialize';
+
 import { Renderer3 } from '@angular/core/src/render3/renderer';
 import { AvailableDonations } from '../objects/availableDonations';
 import { Router } from '@angular/router';
@@ -12,8 +12,7 @@ import { PostDonationService } from '../services/post-donation.service';
   styleUrls: ['./cause.component.scss']
 })
 export class CauseComponent implements OnInit, AfterViewInit {
-  globalActions = new EventEmitter<string|MaterializeAction>();
-  modalActions = new EventEmitter<string|MaterializeAction>();
+
   procent = 0;
   @ViewChild('blood') blood: ElementRef;
   @Input() donations: AvailableDonations;
@@ -28,15 +27,15 @@ export class CauseComponent implements OnInit, AfterViewInit {
 
 
   closeModal() {
-    this.modalActions.emit({action: 'modal', params: ['close']});
+   // this.modalActions.emit({action: 'modal', params: ['close']});
   }
 
   openModal() {
-    this.modalActions.emit({action: 'modal', params: ['open']});
+    //this.modalActions.emit({action: 'modal', params: ['open']});
   }
 
   triggerToast() {
-    this.globalActions.emit('toast');
+    //this.globalActions.emit('toast');
     localStorage.setItem('donated', 'true');
     const donation = {
       donation_id: this.donations.id,

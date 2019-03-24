@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { MaterializeDirective, MaterializeAction } from 'angular2-materialize';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostDonationService } from '../services/post-donation.service';
-import { DonationResponse } from '../objects/donationResponse';
+
 
 @Component({
   selector: 'app-create-donation-request',
@@ -10,7 +10,7 @@ import { DonationResponse } from '../objects/donationResponse';
   styleUrls: ['./create-donation-request.component.scss']
 })
 export class CreateDonationRequestComponent implements OnInit {
-  modalActions = new EventEmitter<string|MaterializeAction>();
+
   createDonationForm: FormGroup;
   selectedOption="";
   namePlaceholder = "Hospital Name";

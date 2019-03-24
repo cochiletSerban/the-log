@@ -50,26 +50,15 @@ export class AuthPageComponent implements OnInit {
       'password' : new FormControl(null, Validators.required),
       'email' : new FormControl(null, [Validators.email, Validators.required]),
       'username' : new FormControl(null, Validators.required),
-      'bloodType': new FormControl(null, Validators.required),
-      'hospital': new FormControl(null),
     });
   }
 
   showDoctorRegisterFrom() {
     this.showDoctorRegister = !this.showDoctorRegister;
     if (this.showDoctorRegister)  {
-      this.registerText = 'Register as Doctor';
-      this.registerForm.get('hospital').setValidators(Validators.required);
-      this.registerForm.get('bloodType').clearValidators();
-      this.registerForm.get('bloodType').updateValueAndValidity();
-      this.registerForm.get('hospital').updateValueAndValidity();
-
+      this.registerText = 'Register as Manager';
     } else {
       this.registerText = 'Register';
-      this.registerForm.get('bloodType').setValidators(Validators.required);
-      this.registerForm.get('hospital').clearValidators();
-      this.registerForm.get('bloodType').updateValueAndValidity();
-      this.registerForm.get('hospital').updateValueAndValidity();
     }
   }
 
@@ -163,26 +152,12 @@ export class AuthPageComponent implements OnInit {
       username: this.registerForm.value.username,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
-      type: userType,
-      blood_type: this.registerForm.value.bloodType,
-      hospital: this.registerForm.value.hospital
+      type: userType
     };
 
     if (!this.registerForm.get('username').valid) {
       this.myUserValidation = 'invalid';
       this.errMsg = 'No  username';
-      this.show = true;
-      this.shakeFrom();
-    } else if (!this.registerForm.get('bloodType').valid) {
-      this.myUserValidation = 'valid';
-      this.myBloodTypeValidation = 'invalid';
-      this.errMsg = 'No  bloodType';
-      this.show = true;
-      this.shakeFrom();
-    } else if (!this.registerForm.get('hospital').valid) {
-      this.myBloodTypeValidation = 'valid';
-      this.myHospitalValidation = 'invalid';
-      this.errMsg = 'No  Hospital';
       this.show = true;
       this.shakeFrom();
     } else if (!this.registerForm.get('email').valid) {
@@ -203,8 +178,6 @@ export class AuthPageComponent implements OnInit {
       this.myEmailValidator = 'valid';
       this.myPasswordValidator = 'valid';
       this.myUserValidation = 'valid';
-      this.myBloodTypeValidation = 'valid';
-      this.myHospitalValidation = 'valid';
       this.errMsg = '';
 
       console.log(this.registerUser);

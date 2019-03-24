@@ -2,7 +2,7 @@
 <div class="bar"></div>
 
 <!-- image slider -->
-<div class="slider fullscreen" materialize="slider" [materializeParams]="[{fullWidth: true,indicators:false}]" *ngIf="bgs.url.length > 2">
+<div class="slider fullscreen"  *ngIf="bgs.url.length > 2">
   <ul class="slides">
     <li class="bgFix"  *ngFor = "let i of bgs.url" [ngStyle]="{ 'background-image': 'url(' + i + ')'}"></li>
   </ul>

@@ -1,18 +1,17 @@
 <div class="header">
+
   <div class="row">
     <div class="col center-align s12">
       <!-- picture  col -->
       <div class="col s12">
-        <img src="../../assets/img/tools.png" class="responsive-img" width="100px;" alt="">
+        <img src="../../assets/img/tools.png" class="responsive-img" width="70px" alt="">
       </div>
-      <div class="col s12">
-        <div class="col s12">
-          <h3>Administrator</h3>
-        </div>
+          <h5> Administrator </h5>
       </div>
-    </div>
+
   </div>
 </div>
+
 
 
 <div class="container">
@@ -21,7 +20,7 @@
         <ul class="collection" *ngFor="let doctor of doctors; let i = index">
           <li class="collection-avatar doc">
                 <img src="../../assets/img/cross.png" alt="" class="circle" style="width:20px;">
-                <span class="title" style="font-size: 25px;">Doctor</span>
+                <span class="title" style="font-size: 25px;">Manager</span>
                 <div class="switch" style="float: right;">
                     <label>Off
                       <input type="checkbox" [formControlName]="i" [id]="i">

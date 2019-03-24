@@ -12,7 +12,7 @@
 
     <button *ngIf="checkDonor()" class="btn waves-effect waves-light" (click)="triggerToast()">Donate</button>
 
-    <div id="modal" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+    <div id="modal" class="modal bottom-sheet">
 
       <div class="modal-content">
         <h4>{{donations.name}}</h4>

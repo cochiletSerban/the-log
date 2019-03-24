@@ -1,8 +1,7 @@
-import { MaterializeModule } from 'angular2-materialize';
+// import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
-
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -33,7 +32,7 @@ const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: AuthPageComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'doctor-profile', component: DoctorProfileComponent },
+  { path: 'manager-profile', component: DoctorProfileComponent },
   { path: 'avaible-donations', component: AvaibleDonationsForUserComponent },
   { path: 'admin-profile', component : AdminProfileComponent },
   { path: 'feed', component : FeedComponent }
@@ -57,7 +56,7 @@ const appRoutes: Routes = [
     FeedComponent
   ],
   imports: [
-    MaterializeModule,
+    // MaterializeModule,
     BrowserModule,
     ReactiveFormsModule,
     Angular2FontawesomeModule,

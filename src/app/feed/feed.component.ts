@@ -1,6 +1,7 @@
 import { EntryService } from './../services/entry.service';
 import { Entry } from './../objects/entry';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor(private entryService: EntryService) {
+  constructor(private entryService: EntryService, private router: Router) {
     entryService.feedEntryAdded$.subscribe(entry => {
       this.allEntries.push(entry);
     });
@@ -19,6 +20,13 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
     this.entryService.getAllEntries().subscribe(entries => this.allEntries = entries);
+  }
+
+  get isManager() {
+    if (this.router.url === '/manager-profile') {
+      return true;
+    }
+    return false;
   }
 
 }

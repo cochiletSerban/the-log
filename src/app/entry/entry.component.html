@@ -1,7 +1,9 @@
 <div class="box left-align">
   <h5>{{entry.logTitle}}</h5>
+  <p *ngIf="!isUser"> Added by: {{entry.addedBy}} </p>
+  <code>{{entry.addedOn}}</code>
   <div class="hr"></div>
   <p>{{entry.logContent}}</p>
   <div class="hr"></div>
-  <code>{{entry.logTags}}</code>
+  <code>Tags: {{entry.logTags}}</code>
 </div>

@@ -10,7 +10,7 @@
             <app-entry *ngFor="let entry of allEntries" [entry]="entry"></app-entry>
         </div>
 
-        <app-add-log-modal></app-add-log-modal>
+        <app-add-log-modal *ngIf="!isManager"></app-add-log-modal>
     </div>
   </div>
 </div>

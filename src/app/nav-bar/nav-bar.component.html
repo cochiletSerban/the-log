@@ -1,23 +1,22 @@
-<div class="navbar-fixed">
+<div *ngIf="!hideNav">
+
+  <div class="navbar-fixed">
     <nav>
-      <div class="container">
-          <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Logo</a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-              </ul>
-            </div>
+      <div class="nav-wrapper container">
+        <a href="#!" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a [routerLink]="['/feed']" *ngIf="!isManager && !isAdmin">Board</a></li>
+          <li><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager">My entries</a></li>
+          <li><a (click)="auth.logout()">Logout</a></li>
+        </ul>
       </div>
     </nav>
   </div>
 
-  <!-- <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
-  </ul> -->
+  <ul class="sidenav" #yolo id="mobile-demo">
+    <li><a [routerLink]="['/feed']">Feed</a></li>
+    <li><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager" >My Entries</a></li>
+  </ul>
 
-
-<!-- fix postion refllow div -->
-<!-- <div></div> -->
+</div>

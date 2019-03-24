@@ -1,8 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import { GetBgService } from '../services/get-bg.service';
 import { BgArray } from '../objects/BgArray';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome';
-import { MyJqService } from '../services/my-jq.service';
+
 
 declare var $: any;
 

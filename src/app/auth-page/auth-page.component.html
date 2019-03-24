@@ -52,16 +52,6 @@
               </div>
 
 
-              <div class="input-field" *ngIf="!showDoctorRegister">
-                <input type="text" class="{{myBloodTypeValidation}}" formControlName="bloodType">
-                <label for="text">BloodType</label>
-              </div>
-
-              <div class="input-field" *ngIf="showDoctorRegister">
-                <input type="text" class="{{myHospitalValidation}}" formControlName="hospital">
-                <label for="text">Hospital</label>
-              </div>
-
               <div class="input-field">
                 <input type="email" class="{{myEmailValidator}}" formControlName="email">
                 <label for="email">Email</label>
@@ -71,16 +61,12 @@
                 <input type="password" class="{{myPasswordValidator}}" formControlName="password">
                 <label for="password">Password</label>
               </div>
-
-              <p >
-                <input (click)="showDoctorRegisterFrom()" type="checkbox" id="doctor" />
-                <label for="doctor">Are you a doctor ?</label>
-              </p>
-
-
-
-
-
+              <p>
+                <label>
+                  <input (click)="showDoctorRegisterFrom()" type="checkbox" id="doctor" />
+                  <span> Register as manager </span>
+             </label>
+            </p>
 
 
               <button class="btn waves-light waves-effect" #loginPiky>{{registerText}}</button>

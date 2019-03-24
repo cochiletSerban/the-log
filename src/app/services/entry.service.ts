@@ -20,35 +20,45 @@ export class EntryService {
       logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
       Consequaturasdf sapiente incidunt voluptate iste laudantium vitae
       nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
+      logTags: 'sefu, yolo',
+      addedBy: 'mihai',
+      addedOn: new Date()
     },
     {
       logTitle: 'ent2',
       logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
       Consequatur sapiente iasdfasdncidunt voluptate iste laudantium vitae
       nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
+      logTags: 'sefu, yolo',
+      addedBy: 'michael',
+      addedOn: new Date()
     },
     {
       logTitle: 'ent3',
       logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
       Consequatur sapiente sdfaincidunt voluptate iste laudantium vitae
       nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
+      logTags: 'sefu, yolo',
+      addedBy: 'ion',
+      addedOn: new Date()
     },
     {
       logTitle: 'ent4',
       logContent: `Lorem ipsumasd dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
       Consequatur sapiente incidunt voluptate iste laudantium vitae
       nobis nemo quaeratasd, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
+      logTags: 'sefu, yolo',
+      addedBy: 'John',
+      addedOn: new Date()
     },
     {
       logTitle: 'ent5',
       logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
       Consequatur sapasdfiente incidunt voluptate iste laudantium vitae
       nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo'
+      logTags: 'sefu, yolo',
+      addedBy: 'larisa',
+      addedOn: new Date()
     },
   ];
 
@@ -86,7 +96,7 @@ export class EntryService {
   }
 
   getPrivateEntries() {
-    return of (this.publicEntries.slice(0.3)).delay(100);
+    return of (this.publicEntries.slice(0, 3)).delay(100);
   }
 
   getAllEntries() {
