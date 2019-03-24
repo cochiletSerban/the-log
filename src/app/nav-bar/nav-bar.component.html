@@ -3,8 +3,8 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper container">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a [routerLink]="['/feed']" href="#!" class="brand-logo"><img src="../../assets/img/drop.png"  width="50" alt="" srcset=""></a>
+        <a  data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a [routerLink]="['/feed']" *ngIf="!isManager && !isAdmin">Board</a></li>
           <li><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager">My entries</a></li>
@@ -14,7 +14,7 @@
     </nav>
   </div>
 
-  <ul class="sidenav" #yolo id="mobile-demo">
+  <ul class="sidenav"  id="mobile-demo">
     <li><a [routerLink]="['/feed']">Feed</a></li>
     <li><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager" >My Entries</a></li>
   </ul>

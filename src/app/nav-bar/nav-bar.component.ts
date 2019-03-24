@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, ElementRef, AfterViewInit} from '@angu
 import * as M from 'materialize-css/dist/js/materialize';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+declare var $: any;
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
