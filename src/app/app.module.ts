@@ -27,6 +27,8 @@ import { AddLogModalComponent } from './add-log-modal/add-log-modal.component';
 import { EntryComponent } from './entry/entry.component';
 import { EntryService } from './services/entry.service';
 import { FeedComponent } from './feed/feed.component';
+import { SearchComponent } from './search/search.component';
+import { EntryFilterPipe } from './entry-filter.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -53,7 +55,9 @@ const appRoutes: Routes = [
     NavBarComponent,
     AddLogModalComponent,
     EntryComponent,
-    FeedComponent
+    FeedComponent,
+    SearchComponent,
+    EntryFilterPipe
   ],
   imports: [
     // MaterializeModule,

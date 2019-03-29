@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-
+  searchText: string;
   constructor(private entryService: EntryService, private router: Router) {
     entryService.feedEntryAdded$.subscribe(entry => {
       this.allEntries.push(entry);

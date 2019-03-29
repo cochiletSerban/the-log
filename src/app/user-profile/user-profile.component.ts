@@ -11,6 +11,7 @@ import * as M from 'materialize-css/dist/js/materialize';
 export class UserProfileComponent implements OnInit, AfterViewInit {
   name: string;
   currentTab = 'feed';
+  searchText: string;
   privateEntries: Array<Entry>;
   publicEntries: Array<Entry>;
 

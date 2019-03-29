@@ -5,4 +5,7 @@
 .box {
   @extend %box;
   padding: 10px;
+  border-width: 10px;
+  border-style: hidden hidden hidden double;
+  border-color: $primary-color;
 }
