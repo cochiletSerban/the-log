@@ -20,7 +20,7 @@ export class EntryFilterPipe implements PipeTransform {
 
     searchText = searchText.toLowerCase();
 
-    return entrys.filter(entry => entry.logTitle.concat(entry.logTags).concat(entry.addedBy).includes(searchText))
+    return entrys.filter(entry => entry.title.concat(entry.tags).concat(entry.owner.username).includes(searchText))
       .filter(uniq);
 
   }

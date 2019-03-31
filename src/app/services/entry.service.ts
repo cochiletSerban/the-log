@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs/observable/of';
 import { delay } from 'rxjs/operator/delay';
 import { Subject } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class EntryService {
@@ -13,94 +16,53 @@ export class EntryService {
 
   private feedEntryAddedSource = new Subject <Entry>();
   feedEntryAdded$ = this.feedEntryAddedSource.asObservable();
-
-  private publicEntries: Array<Entry> = [
-    {
-      logTitle: 'ent1',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequaturasdf sapiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo',
-      addedBy: 'mihai',
-      addedOn: new Date()
-    },
-    {
-      logTitle: 'ent2',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente iasdfasdncidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo',
-      addedBy: 'michael',
-      addedOn: new Date()
-    },
-    {
-      logTitle: 'ent3',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente sdfaincidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo',
-      addedBy: 'ion',
-      addedOn: new Date()
-    },
-    {
-      logTitle: 'ent4',
-      logContent: `Lorem ipsumasd dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaeratasd, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo',
-      addedBy: 'John',
-      addedOn: new Date()
-    },
-    {
-      logTitle: 'ent5',
-      logContent: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odio repellendus quibusdam porro enim
-      Consequatur sapasdfiente incidunt voluptate iste laudantium vitae
-      nobis nemo quaerat, eius accusamus ullam quidem? Quo, cupiditate?`,
-      logTags: 'sefu, yolo',
-      addedBy: 'larisa',
-      addedOn: new Date()
-    },
-  ];
+  
+  entryUrl = environment.apiUrl + '/entries';
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient, private auth: AuthService) { }
 
-  addEntry(entry: Entry) {
+  addEntry(entry) {
 
     if (this.router.url === '/user-profile') {
 
       console.log('adding to private logs ' + entry);
-      this.updateEntryList(entry, 'private');
-
-      return of(entry).delay(100);
+      return  this.updateEntryList(entry, 'private');
 
     } else {
 
-      this.updateEntryList(entry, 'feed');
       console.log('adding logs to feed ' + entry);
+      return this.updateEntryList(entry, 'feed');
 
-      return of(entry).delay(100);
     }
   }
 
   updateEntryList(entry: Entry, type) {
     if (type === 'private') {
-      this.privateEntryAddedSource.next(entry);
+      return this.http.post(this.entryUrl, {...entry, private: true}).map((ent: Entry) => {
+        console.log(ent);
+        this.privateEntryAddedSource.next(ent);
+      });
     } else {
-      this.feedEntryAddedSource.next(entry);
-    }
+      return this.http.post(this.entryUrl, {...entry, private: false}).map((ent: Entry) => {
+        console.log(ent);
+        this.feedEntryAddedSource.next(ent);
+    });
   }
+}
 
   getPublicEntries() {
-    return of (this.publicEntries).delay(100);
+    return this.http.get<Entry[]>(environment.apiUrl + '/users/' +
+    this.auth.getUserDetailes()._id + '/entries', {params: {private: 'false'}});
   }
 
   getPrivateEntries() {
-    return of (this.publicEntries.slice(0, 3)).delay(100);
+    return this.http.get<Entry[]>(environment.apiUrl + '/users/' +
+    this.auth.getUserDetailes()._id + '/entries', {params: {private: 'true'}});
   }
 
   getAllEntries() {
-    return of (this.publicEntries.concat(this.publicEntries)).delay(100);
+    return this.http.get<Entry[]>(this.entryUrl, {params: {private: 'false'}});
   }
 
 

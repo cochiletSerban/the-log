@@ -25,11 +25,11 @@
         </ul>
         <!-- first tab -->
         <div id="bloodWork" class="col s12">
-            <app-entry *ngFor="let entry of publicEntries | entryFilter: searchText" [entry]="entry"></app-entry>
+            <app-entry *ngFor="let publicEntry of publicEntries | entryFilter: searchText" [entry]="publicEntry"></app-entry>
         </div>
         <!-- second tab -->
         <div id="donationHistory" class="col s12">
-            <app-entry *ngFor="let entry of privateEntries | entryFilter: searchText" [entry]="entry"></app-entry>
+            <app-entry *ngFor="let privateEntry of privateEntries | entryFilter: searchText" [entry]="privateEntry"></app-entry>
             <!-- add entry modal -->
             <app-add-log-modal></app-add-log-modal>
         </div>

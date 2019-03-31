@@ -1,9 +1,9 @@
 <div class="box left-align">
-  <h5>{{entry.logTitle}}</h5>
-  <p *ngIf="!isUser"> Added by: {{entry.addedBy}} </p>
-  <code>{{entry.addedOn}}</code>
+  <h5>{{entry.title}}</h5>
+  <p *ngIf="!isUser"> Added by: {{entry.owner.username}} </p>
+  <code>{{entry.createdAt}}</code>
   <div class="hr"></div>
-  <p>{{entry.logContent}}</p>
+  <p style="word-wrap: break-word;">{{entry.content}}</p>
   <div class="hr"></div>
-  <code>Tags: {{entry.logTags}}</code>
+  <code>Tags: {{entry.tags}}</code>
 </div>

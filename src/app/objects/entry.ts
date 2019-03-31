@@ -1,7 +1,11 @@
+import {User} from './user';
+
 export interface Entry {
-  logTitle: string;
-  logContent: string;
-  logTags: string;
-  addedBy: string;
-  addedOn: Date;
+  title: string;
+  content: string;
+  tags: string;
+  owner: User;
+  createdAt: Date;
+  updatedAt: Date;
+  private: Boolean;
 }

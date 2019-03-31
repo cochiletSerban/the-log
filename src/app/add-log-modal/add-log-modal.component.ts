@@ -37,7 +37,14 @@ export class AddLogModalComponent implements OnInit, AfterViewInit {
 
   addEntry() {
     if (this.logForm.valid) {
-      const entry: Entry = this.logForm.value;
+     const entry = {
+
+     content : this.logForm.get('logContent').value,
+     tags : this.logForm.get('logTags').value,
+     title : this.logForm.get('logTitle').value
+
+     };
+
       this.entryService.addEntry(entry).subscribe(res => {
         this.closeModal();
         M.toast({html: 'gg wp'});

@@ -43,8 +43,8 @@ export class AuthPageComponent implements OnInit {
   ngOnInit() {
     $('.tabs').tabs();
     this.loginForm = new FormGroup({
-      'password' : new FormControl(null, Validators.required),
-      'username' : new FormControl(null, Validators.required)
+      'password' : new FormControl(null, [Validators.required]),
+      'username' : new FormControl(null, [Validators.required, Validators.email])
     });
     this.registerForm =  new FormGroup({
       'password' : new FormControl(null, Validators.required),
@@ -81,7 +81,7 @@ export class AuthPageComponent implements OnInit {
   login() {
     this.show = false;
     this.loginUser = {
-      username: this.loginForm.value.username,
+      email: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
     if (!this.loginForm.get('username').valid) {
@@ -103,38 +103,38 @@ export class AuthPageComponent implements OnInit {
       this.auth.login(this.loginUser).subscribe(
         resp => {
 
-          console.log(this.auth.getUserType(resp.user_type));
+          console.log(this.auth.getUserDetailes().role);
 
-          if (this.auth.getUserType(resp.user_type) === 'donor') {
+          if (this.auth.getUserDetailes().role === 'user') {
             this.router.navigate(['/user-profile']);
-          } else if (this.auth.getUserType(resp.user_type) === 'admin') {
+          } else if (this.auth.getUserDetailes().role === 'admin') {
             this.router.navigate(['/admin-profile']);
-          } else if (this.auth.getUserType(resp.user_type) === 'doctor') {
-            if (!resp.is_valid) {
-              this.errMsg = "Admin's approval is required";
+          } else if (this.auth.getUserDetailes().role === 'manager') {
+            if (!this.auth.getUserDetailes().active) {
+              this.errMsg = 'Admin approval is required';
               this.show = true;
             } else {
-            this.router.navigate(['/doctor-profile']);
+            this.router.navigate(['/manager-profile']);
             }
           }
-        },
-        err => {
-          this.errMsg = err.error;
-          this.show = true;
-          if (this.errMsg.charAt(0) === 'N') {
-            this.loginForm.controls['email'].setErrors({'incorrect': true});
-            this.myEmailValidator = 'invalid';
-            this.render.removeClass(this.titleBar.nativeElement, 'bounce');
-
-            this.shakeFrom();
-          } else {
-            this.loginForm.controls['password'].setErrors({'incorrect': true});
-            this.myPasswordValidator = 'invalid';
-            this.render.removeClass(this.titleBar.nativeElement, 'bounce');
-
-            this.shakeFrom();
-          }
         }
+        // err => {
+        //   this.errMsg = err.error;
+        //   this.show = true;
+        //   if (this.errMsg.charAt(0) === 'N') {
+        //     this.loginForm.controls['email'].setErrors({'incorrect': true});
+        //     this.myEmailValidator = 'invalid';
+        //     this.render.removeClass(this.titleBar.nativeElement, 'bounce');
+
+        //     this.shakeFrom();
+        //   } else {
+        //     this.loginForm.controls['password'].setErrors({'incorrect': true});
+        //     this.myPasswordValidator = 'invalid';
+        //     this.render.removeClass(this.titleBar.nativeElement, 'bounce');
+
+        //     this.shakeFrom();
+        //   }
+        // }
       );
     }
 
@@ -144,15 +144,15 @@ export class AuthPageComponent implements OnInit {
 
     this.show = false;
     this.moveTitleBar(this.loginPiky);
-    let userType = 'donor';
+    let userType = 'user';
     if (this.showDoctorRegister === true) {
-      userType = 'doctor';
+      userType = 'manager';
     }
     this.registerUser = {
       username: this.registerForm.value.username,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
-      type: userType
+      role: userType
     };
 
     if (!this.registerForm.get('username').valid) {
