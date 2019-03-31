@@ -85,7 +85,7 @@ export class AuthPageComponent implements OnInit {
       password: this.loginForm.value.password
     };
     if (!this.loginForm.get('username').valid) {
-      this.errMsg = 'Invalid username!';
+      this.errMsg = 'Invalid email!';
       this.show = true;
       this.myUserValidation = 'invalid';
       this.shakeFrom();
@@ -117,24 +117,25 @@ export class AuthPageComponent implements OnInit {
             this.router.navigate(['/manager-profile']);
             }
           }
+        },
+        err => {
+
+          this.errMsg = err.statusText;
+          this.show = true;
+          //if (this.errMsg.charAt(0) === 'N') {
+            this.loginForm.controls['username'].setErrors({'incorrect': true});
+            this.myEmailValidator = 'invalid';
+            //this.render.removeClass(this.titleBar.nativeElement, 'bounce');
+
+            this.shakeFrom();
+         // } else {
+            this.loginForm.controls['password'].setErrors({'incorrect': true});
+            this.myPasswordValidator = 'invalid';
+            //this.render.removeClass(this.titleBar.nativeElement, 'bounce');
+
+            //this.shakeFrom();
+        //  }
         }
-        // err => {
-        //   this.errMsg = err.error;
-        //   this.show = true;
-        //   if (this.errMsg.charAt(0) === 'N') {
-        //     this.loginForm.controls['email'].setErrors({'incorrect': true});
-        //     this.myEmailValidator = 'invalid';
-        //     this.render.removeClass(this.titleBar.nativeElement, 'bounce');
-
-        //     this.shakeFrom();
-        //   } else {
-        //     this.loginForm.controls['password'].setErrors({'incorrect': true});
-        //     this.myPasswordValidator = 'invalid';
-        //     this.render.removeClass(this.titleBar.nativeElement, 'bounce');
-
-        //     this.shakeFrom();
-        //   }
-        // }
       );
     }
 
@@ -191,21 +192,22 @@ export class AuthPageComponent implements OnInit {
           this.activeLogin.nativeElement.click();
         },
         err => {
-          this.errMsg = err.error;
+          this.errMsg = err.statusText;
           this.show = true;
-          if (this.errMsg.charAt(0) === 'N') {
-            this.loginForm.controls['email'].setErrors({'incorrect': true});
+          //if (this.errMsg.charAt(0) === 'N') {
+            this.registerForm.controls['email'].setErrors({'incorrect': true});
+            //this.registerForm.controls['password'].setErrors({'incorrect': true});
+            this.registerForm.controls['username'].setErrors({'incorrect': true});
             this.myEmailValidator = 'invalid';
             this.render.removeClass(this.titleBar.nativeElement, 'bounce');
 
             this.shakeFrom();
-          } else {
-            this.loginForm.controls['password'].setErrors({'incorrect': true});
+          //} else {
             this.myPasswordValidator = 'invalid';
-            this.render.removeClass(this.titleBar.nativeElement, 'bounce');
+            //this.render.removeClass(this.titleBar.nativeElement, 'bounce');
 
-            this.shakeFrom();
-          }
+           // this.shakeFrom();
+         // }
         }
       );
     }

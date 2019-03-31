@@ -1,6 +1,6 @@
 export interface AdminPanelUser {
-    _id: string
+    _id: string;
     username: string;
-    type: number;
-    is_valid: boolean;
+    role: string;
+    active: boolean;
 }

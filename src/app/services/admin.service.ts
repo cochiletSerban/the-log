@@ -6,52 +6,28 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AdminPanelUser } from '../objects/adminPanelUser';
 import { of } from 'rxjs/observable/of';
+import { environment } from '../../environments/environment';
+import { User } from '../objects/user';
 
 @Injectable()
 export class AdminService {
 
-  url = 'https://shielded-hollows-19820.herokuapp.com/';
+  apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
-  users: AdminPanelUser[] =
-  [
-    {
-      _id: '1245',
-      username: 'user1',
-      type: 3,
-      is_valid: true
-    },
-
-    {
-      _id: '1245',
-      username: 'user2',
-      type: 3,
-      is_valid: false
-    },
-    {
-      _id: '1245',
-      username: 'user3',
-      type: 3,
-      is_valid: false
-    },
-    {
-      _id: '1245',
-      username: 'user4',
-      type: 3,
-      is_valid: true
-    }
-  ];
+  users: AdminPanelUser[] = [];
+  
 
 
   getDoctors() {
     //return this.http.get<AdminPanelUser[]>(this.url + 'get_users');
-    return of(this.users).delay(100);
+    return this.http.get<AdminPanelUser[]>(this.apiUrl + '/users');
   }
 
-  validateDoctor(username: string) {
-    return this.http.post(this.url + 'validate_user', {username: username});
+  validateDoctor(user: User) {
+    return this.http.patch(this.apiUrl + '/users/' + user._id , {active: true});
   }
 
-  invalidateDoctor(username: string) {
-    return this.http.post(this.url + 'invalidate_user', {username: username});
+  invalidateDoctor(user: User) {
+    return this.http.patch(this.apiUrl + '/users/' + user._id , {active: false});
   }
 }

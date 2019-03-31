@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { AdminService } from '../services/admin.service';
-
+import * as M from 'materialize-css/dist/js/materialize';
 @Component({
   selector: 'app-admin-profile',
   templateUrl: './admin-profile.component.html',
@@ -19,9 +19,9 @@ export class AdminProfileComponent implements OnInit {
     this.adminService.getDoctors().subscribe(resp => {
       console.log(resp);
       resp.forEach(element => {
-        if (element.type === 3) {
-          this.doctors.push(element.username);
-          doctorsFormArray.push(new FormControl(element.is_valid));
+        if (element.role === 'manager') {
+          this.doctors.push(element);
+          doctorsFormArray.push(new FormControl(element.active));
         }
       });
     });
@@ -45,14 +45,21 @@ export class AdminProfileComponent implements OnInit {
       //console.log(this.doctors[_i]+ " " +this.doctorsForm.value.doctors[_i]);
       if (this.doctorsForm.value.doctors[_i]) {
         this.adminService.validateDoctor(this.doctors[_i]).subscribe(
-          resp => console.log(resp),
+          resp => {
+            console.log(resp);
+            M.toast({html: `${this.doctors[_i].username}'s account was activated`});
+
+          },
           err => {
             console.log(err);
           }
         );
       } else if (!this.doctorsForm.value.doctors[_i]) {
         this.adminService.invalidateDoctor(this.doctors[_i]).subscribe(
-          resp => console.log(resp),
+          resp => {
+            console.log(resp);
+            M.toast({html: `${this.doctors[_i].username}'s account was deactivated`});
+          },
           err => {
             console.log(err);
           }
