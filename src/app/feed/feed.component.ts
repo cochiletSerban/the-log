@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FeedComponent implements OnInit {
   searchText: string;
+  selected = false;
   constructor(private entryService: EntryService, private router: Router) {
     entryService.feedEntryAdded$.subscribe(entry => {
       this.allEntries.push(entry);

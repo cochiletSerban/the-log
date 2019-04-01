@@ -1,4 +1,4 @@
-<div class="box left-align">
+<div class="box left-align {{isSelected}}" (click)="selected()">
   <h5>{{entry.title}}</h5>
   <p *ngIf="!isUser"> Added by: {{entry.owner.username}} </p>
   <code>{{entry.createdAt}}</code>

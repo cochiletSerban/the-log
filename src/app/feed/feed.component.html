@@ -7,10 +7,11 @@
           <app-search (search)="searchText=$event" ></app-search>
         </div>
         <div class="row">
-            <app-entry *ngFor="let entry of allEntries | entryFilter: searchText "  [entry]="entry"></app-entry>
+            <app-entry *ngFor="let entry of allEntries | entryFilter: searchText" [entry]="entry"  ></app-entry>
         </div>
 
         <app-add-log-modal *ngIf="!isManager"></app-add-log-modal>
+        <button id="editButton" *ngIf="isManager" class="btn-floating btn-large waves-effect waves-light" ><i class="material-icons">edit</i></button>
     </div>
   </div>
 </div>
