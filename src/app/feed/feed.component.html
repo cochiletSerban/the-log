@@ -7,11 +7,45 @@
           <app-search (search)="searchText=$event" ></app-search>
         </div>
         <div class="row">
-            <app-entry *ngFor="let entry of allEntries | entryFilter: searchText" [entry]="entry"  ></app-entry>
+            <app-entry *ngFor="let entry of allEntries | entryFilter: searchText" [entry]="entry" (entrySelected)="pushEntry($event)" ></app-entry>
         </div>
 
-        <app-add-log-modal *ngIf="!isManager"></app-add-log-modal>
-        <button id="editButton" *ngIf="isManager" class="btn-floating btn-large waves-effect waves-light" ><i class="material-icons">edit</i></button>
+        <app-add-log-modal *ngIf="!isManager" ></app-add-log-modal>
+
+
+
+        <div id="modal" class="modal"  >
+
+          <div class="modal-content">
+            <div class="container">
+              <div class="row">
+                <div class="col s12 center-align">
+                  <div class="row">
+                    <h5>
+                      Are you sure you want to delete {{selectedEntries.length}} entries ?
+                    </h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col s12 m5">
+                  <button class="btn  width modal-action modal-close waves-effect waves-light">No</button>
+                </div>
+
+                <div class="col s12 m5 offset-m2">
+                  <button class="btn width waves-effect waves-light" (click)="deleteItems()" >Yes</button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <button id="editButton" *ngIf="isManager" [disabled]="selectedEntries.length===0" class="btn-floating btn-large waves-effect waves-light modal-trigger"  data-target="modal"  ><i class="material-icons">delete</i></button>
     </div>
   </div>
 </div>

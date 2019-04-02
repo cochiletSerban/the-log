@@ -16,7 +16,12 @@ export class EntryService {
 
   private feedEntryAddedSource = new Subject <Entry>();
   feedEntryAdded$ = this.feedEntryAddedSource.asObservable();
-  
+
+  private feedEntryNewListSource = new Subject <Entry[]>();
+  feedNewListAdded$ = this.feedEntryNewListSource.asObservable();
+
+
+  feedEntries: Entry[] = [];
   entryUrl = environment.apiUrl + '/entries';
 
 
@@ -40,12 +45,12 @@ export class EntryService {
   updateEntryList(entry: Entry, type) {
     if (type === 'private') {
       return this.http.post(this.entryUrl, {...entry, private: true}).map((ent: Entry) => {
-        console.log(ent);
+
         this.privateEntryAddedSource.next(ent);
       });
     } else {
       return this.http.post(this.entryUrl, {...entry, private: false}).map((ent: Entry) => {
-        console.log(ent);
+        this.feedEntries.push(ent);
         this.feedEntryAddedSource.next(ent);
     });
   }
@@ -53,7 +58,7 @@ export class EntryService {
 
   getPublicEntries() {
     return this.http.get<Entry[]>(environment.apiUrl + '/users/' +
-    this.auth.getUserDetailes()._id + '/entries', {params: {private: 'false'}});
+    this.auth.getUserDetailes()._id + '/entries', {params: {private: 'false'}})
   }
 
   getPrivateEntries() {
@@ -62,7 +67,24 @@ export class EntryService {
   }
 
   getAllEntries() {
-    return this.http.get<Entry[]>(this.entryUrl, {params: {private: 'false'}});
+    return this.http.get<Entry[]>(this.entryUrl, {params: {private: 'false'}}).map(ent => this.feedEntries = ent);
+  }
+
+  deleteEntries(entryList: Entry[]) {
+
+    entryList.forEach(ent => {
+      this.feedEntries = this.feedEntries.filter(ele =>  ele !== ent);
+    });
+
+    this.feedEntryNewListSource.next(this.feedEntries);
+
+    const entryListId = entryList.map(entry => entry._id);
+
+    console.log(entryListId);
+
+    const params = new HttpParams({ fromObject: { ids: entryListId } });
+
+    return this.http.delete(this.entryUrl, {params: params});
   }
 
 
