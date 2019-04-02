@@ -38,10 +38,10 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   constructor(private bg: GetBgService, private render: Renderer2, private ref: ElementRef) {}
 
   ngOnInit() {
-    this.bg.getBg().subscribe(resp => this.bgs = resp);
-    setInterval(() => {
-      this.lpText = this.lpTextArr[this.getRandomizer(0, this.lpTextArr.length - 1)];
-    }, 3500);
+    // this.bg.getBg().subscribe(resp => this.bgs = resp);
+    // setInterval(() => {
+    //   this.lpText = this.lpTextArr[this.getRandomizer(0, this.lpTextArr.length - 1)];
+    // }, 3500);
   }
 
   ngAfterViewInit() {

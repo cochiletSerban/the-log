@@ -3,6 +3,7 @@ import { Entry } from './../objects/entry';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css/dist/js/materialize';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -14,7 +15,7 @@ export class FeedComponent implements OnInit, AfterViewInit {
   searchText: string;
   selected = false;
   constructor(private entryService: EntryService, private router: Router,
-    private elRef: ElementRef) {
+    private elRef: ElementRef, private auth: AuthService) {
     entryService.feedEntryAdded$.subscribe(entry => {
       this.allEntries.push(entry);
     });
@@ -33,12 +34,30 @@ export class FeedComponent implements OnInit, AfterViewInit {
     this.modalInstance = M.Modal.init(this.elRef.nativeElement.querySelector('.modal'), {});
     }
 
-  get isManager() {
-    if (this.router.url === '/manager-profile') {
-      return true;
+    get isAdmin() {
+      // if (this.router.url === '/admin-profile') {
+      //   return true;
+      // }
+      // return false;
+      if (this.auth.getUserDetailes().role === 'admin') {
+        return true;
+      } else {
+        return false;
+      }
     }
-    return false;
-  }
+  
+    get isManager() {
+      // if (this.router.url === '/manager-profile') {
+      //   return true;
+      // }
+      // return false;
+  
+      if (this.auth.getUserDetailes().role === 'manager') {
+        return true;
+      } else {
+        return false;
+      }
+    }
 
   pushEntry(addedEntry) {
     if (addedEntry.add) {
@@ -55,6 +74,7 @@ export class FeedComponent implements OnInit, AfterViewInit {
       M.toast({html: 'Items deleted succesfully'});
       this.selectedEntries = [];
     });
+    this.modalInstance.close();
 
   }
 

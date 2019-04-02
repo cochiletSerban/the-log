@@ -10,7 +10,7 @@
             <app-entry *ngFor="let entry of allEntries | entryFilter: searchText" [entry]="entry" (entrySelected)="pushEntry($event)" ></app-entry>
         </div>
 
-        <app-add-log-modal *ngIf="!isManager" ></app-add-log-modal>
+        <app-add-log-modal *ngIf="!isManager && !isAdmin" ></app-add-log-modal>
 
 
 
@@ -45,7 +45,7 @@
         </div>
 
 
-        <button id="editButton" *ngIf="isManager" [disabled]="selectedEntries.length===0" class="btn-floating btn-large waves-effect waves-light modal-trigger"  data-target="modal"  ><i class="material-icons">delete</i></button>
+        <button id="editButton" *ngIf="isManager && !isAdmin" [disabled]="selectedEntries.length===0" class="btn-floating btn-large waves-effect waves-light modal-trigger"  data-target="modal"  ><i class="material-icons">delete</i></button>
     </div>
   </div>
 </div>

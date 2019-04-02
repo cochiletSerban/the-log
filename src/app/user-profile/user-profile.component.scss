@@ -55,6 +55,8 @@ h3 {
     width: 100%;
 }
 
-.active {
-    background-color: rgba(56, 179, 255, 0.2)!important;
+.tab {
+    .active {
+        background-color: rgba(56, 179, 255, 0.2)!important;
+    }
 }

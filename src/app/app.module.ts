@@ -33,11 +33,10 @@ import { EntryFilterPipe } from './entry-filter.pipe';
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: AuthPageComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'manager-profile', component: DoctorProfileComponent },
-  { path: 'avaible-donations', component: AvaibleDonationsForUserComponent },
-  { path: 'admin-profile', component : AdminProfileComponent },
-  { path: 'feed', component : FeedComponent }
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'manager-profile', component: DoctorProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'admin-profile', component : AdminProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'feed', component : FeedComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

@@ -19,18 +19,20 @@ export class EntryComponent implements OnInit {
   }
 
   selected() {
-    if (this.isSelected === 'selected') {
-      this.isSelected  = '';
-      this.entrySelected.emit({
-        entry: this.entry,
-        add: false
-      });
-    } else {
-      this.isSelected = 'selected';
-      this.entrySelected.emit({
-        entry: this.entry,
-        add: true
-      });
+    if ( this.router.url === '/manager-profile') {
+      if (this.isSelected === 'selected') {
+        this.isSelected  = '';
+        this.entrySelected.emit({
+          entry: this.entry,
+          add: false
+        });
+      } else {
+        this.isSelected = 'selected';
+        this.entrySelected.emit({
+          entry: this.entry,
+          add: true
+        });
+      }
     }
   }
 

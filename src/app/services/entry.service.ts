@@ -50,8 +50,9 @@ export class EntryService {
       });
     } else {
       return this.http.post(this.entryUrl, {...entry, private: false}).map((ent: Entry) => {
-        this.feedEntries.push(ent);
+        
         this.feedEntryAddedSource.next(ent);
+        //this.feedEntries.push(ent);
     });
   }
 }

@@ -37,17 +37,29 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   }
 
   get isAdmin() {
-    if (this.router.url === '/admin-profile') {
+    // if (this.router.url === '/admin-profile') {
+    //   return true;
+    // }
+    // return false;
+    if(!this.auth.isLogedIn()) return false;
+    if (this.auth.getUserDetailes().role === 'admin') {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   get isManager() {
-    if (this.router.url === '/manager-profile') {
+    // if (this.router.url === '/manager-profile') {
+    //   return true;
+    // }
+    // return false;
+    if(!this.auth.isLogedIn()) return false;
+    if (this.auth.getUserDetailes().role === 'manager') {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
 
