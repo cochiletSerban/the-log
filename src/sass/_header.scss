@@ -1,10 +1,14 @@
 @import './vars';
 
 .header {
-    background:url('/assets/img/ep_naturalblack.png');
+    //background:url('/assets/img/ep_naturalblack.png');
+    background: linear-gradient(to bottom, #0091EA 0%,#ffffff 100%);
+    background-size: auto 100%;
     color: white;
     padding-top: 0px;
-    border-bottom:  5px solid  $dark-red;
+    text-shadow: 0px 1px 3px black;
+    padding-bottom: 10px;
+    //border-bottom:  5px solid  $dark-red;
     // text-shadow: 10px 10px 10px black;
     margin-bottom: 10px;
 }

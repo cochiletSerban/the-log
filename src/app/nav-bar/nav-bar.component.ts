@@ -15,6 +15,17 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    $(window).scroll(function(){
+
+      if ($(window).scrollTop() >= 1) {
+        console.log("sdf");
+
+         $('nav').removeClass('hide-header');
+      }
+      else {
+         $('nav').addClass('hide-header');
+      }
+  });
 
   }
 
