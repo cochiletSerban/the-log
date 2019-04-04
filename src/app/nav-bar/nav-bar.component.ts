@@ -30,7 +30,8 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   }
 
   get hideNav() {
-    if (this.router.url === '/' || this.router.url === '/login') {
+    if (this.router.url === '/' || this.router.url === '/login'
+      || this.router.url === '/login(chat:chat)' ) {
       return true;
     }
     return false;
