@@ -29,6 +29,8 @@ import { EntryService } from './services/entry.service';
 import { FeedComponent } from './feed/feed.component';
 import { SearchComponent } from './search/search.component';
 import { EntryFilterPipe } from './entry-filter.pipe';
+import { ChatComponent } from './chat/chat.component';
+import { ChatTriggerComponent } from './chat-trigger/chat-trigger.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
   { path: 'manager-profile', component: DoctorProfileComponent, canActivate: [AuthGuardService]},
   { path: 'admin-profile', component : AdminProfileComponent, canActivate: [AuthGuardService]},
-  { path: 'feed', component : FeedComponent, canActivate: [AuthGuardService] }
+  { path: 'feed', component : FeedComponent, canActivate: [AuthGuardService]},
+  { path: 'chat', component : ChatComponent, outlet: 'chat'}
 ];
 
 @NgModule({
@@ -56,7 +59,9 @@ const appRoutes: Routes = [
     EntryComponent,
     FeedComponent,
     SearchComponent,
-    EntryFilterPipe
+    EntryFilterPipe,
+    ChatComponent,
+    ChatTriggerComponent
   ],
   imports: [
     // MaterializeModule,
