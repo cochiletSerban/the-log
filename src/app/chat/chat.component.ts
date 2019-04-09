@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  loading = true;
+  constructor(private router: Router) {
 
-  constructor(private router: Router) { }
+  }
 
   ngOnInit() {
   }
@@ -16,4 +18,5 @@ export class ChatComponent implements OnInit {
   closeChat() {
     this.router.navigate([{ outlets: { 'chat': null }}]);
   }
+
 }

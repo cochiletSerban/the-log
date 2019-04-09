@@ -12,7 +12,7 @@ export class ChatTriggerComponent implements OnInit {
     router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event: NavigationEnd) => {
-      if (event.url.includes('(')) {
+      if (event.url.includes('(') || event.url === '/') {
         this.hide = true;
       } else {
         this.hide = false;

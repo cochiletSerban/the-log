@@ -1,8 +1,14 @@
 <div class="row" *ngIf="!hide">
     <div class="col s12 m4  l2 ">
       <div class="chatTitleBar" (click)="closeChat()">
-        Admin | Online
+        close chat
+         <i class="material-icons ">arrow_drop_down </i>
       </div>
-      <iframe src="https://chatpw.herokuapp.com/"  frameborder="0"></iframe>
+
+      <div class="progress"  *ngIf="loading">
+          <div class="indeterminate"></div>
+      </div>
+
+      <iframe src="https://chatpw.herokuapp.com/"  [hidden]="loading" (load)="this.loading=!this.loading" frameborder="0"></iframe>
     </div>
   </div>
