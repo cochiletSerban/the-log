@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router,  NavigationStart, NavigationEnd } from '@angular/router';
 
@@ -8,7 +9,9 @@ import { Router,  NavigationStart, NavigationEnd } from '@angular/router';
 })
 export class ChatTriggerComponent implements OnInit {
   hide = false;
-  constructor(private router: Router) {
+  chatTitle = 'Ask us a question';
+
+  constructor(private router: Router, public auth: AuthService) {
     router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event: NavigationEnd) => {
@@ -21,7 +24,11 @@ export class ChatTriggerComponent implements OnInit {
     });
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.auth.getUserDetailes().role === 'admin') {
+      this.chatTitle = 'Answer a question';
+    }
+  }
 
   openChat() {
     this.router.navigate([{ outlets: { 'chat': [ 'chat'] }}]);
