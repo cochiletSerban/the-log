@@ -125,6 +125,9 @@ h4 {
 .tab {
   text-transform: capitalize;
 }
+.tabs {
+  overflow: hidden;
+}
 
 #tab1,#tab2 {
   animation-duration: 0.3s;
