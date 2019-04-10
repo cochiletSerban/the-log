@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ export class SearchComponent implements OnInit {
   searchText: string;
   @Output() search = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(public inter: InternatinonalizationService) { }
 
   ngOnInit() {
   }

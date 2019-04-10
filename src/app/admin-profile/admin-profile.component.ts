@@ -1,7 +1,9 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { AdminService } from '../services/admin.service';
 import * as M from 'materialize-css/dist/js/materialize';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 @Component({
   selector: 'app-admin-profile',
   templateUrl: './admin-profile.component.html',
@@ -12,12 +14,11 @@ export class AdminProfileComponent implements OnInit {
   doctors = [];
   doctorsForm: FormGroup;
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, public auth: AuthService,public inter: InternatinonalizationService) { }
 
   ngOnInit() {
     const doctorsFormArray = new FormArray([]);
     this.adminService.getDoctors().subscribe(resp => {
-      console.log(resp);
       resp.forEach(element => {
         if (element.role === 'manager') {
           this.doctors.push(element);
@@ -25,29 +26,20 @@ export class AdminProfileComponent implements OnInit {
         }
       });
     });
-    
+
     this.doctorsForm = new FormGroup({'doctors': doctorsFormArray}, this.doctorsFormValidator.bind(this));
   }
 
   doctorsFormValidator(c: FormGroup) {
-    // let valid = true;
-    // (<FormArray>(c.get('doctors'))).controls.forEach(control => {
-    //   if (control.value) {
-    //     valid = false;
-    //   }
-    // });    
-    // if (valid) {return null; }
-    // return { invalid: true };
+
   }
 
   onSubmit() {
     for (let _i = 0; _i < this.doctors.length; _i++) {
-      //console.log(this.doctors[_i]+ " " +this.doctorsForm.value.doctors[_i]);
       if (this.doctorsForm.value.doctors[_i]) {
         this.adminService.validateDoctor(this.doctors[_i]).subscribe(
           resp => {
-            console.log(resp);
-            M.toast({html: `${this.doctors[_i].username}'s account was activated`});
+            M.toast({html: this.doctors[_i].username + ' ' + this.inter.labels.adminProfile.toasterActive});
 
           },
           err => {
@@ -57,8 +49,7 @@ export class AdminProfileComponent implements OnInit {
       } else if (!this.doctorsForm.value.doctors[_i]) {
         this.adminService.invalidateDoctor(this.doctors[_i]).subscribe(
           resp => {
-            console.log(resp);
-            M.toast({html: `${this.doctors[_i].username}'s account was deactivated`});
+            M.toast({html: this.doctors[_i].username + ' ' + this.inter.labels.adminProfile.toasterDeactive });
           },
           err => {
             console.log(err);
@@ -68,6 +59,5 @@ export class AdminProfileComponent implements OnInit {
     }
 
     // Array of values, without doctors name
-      console.log(this.doctorsForm.value);
     }
 }

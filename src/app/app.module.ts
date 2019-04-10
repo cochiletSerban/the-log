@@ -1,3 +1,4 @@
+import { InternatinonalizationService } from './services/internatinonalization.service';
 // import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -73,7 +74,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [PostDonationService, GetBgService, AuthGuardService, AdminService, EntryService,
-     AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, GetUserDataService ],
+     AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, GetUserDataService, InternatinonalizationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

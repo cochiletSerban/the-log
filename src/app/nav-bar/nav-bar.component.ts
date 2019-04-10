@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, ElementRef, AfterViewInit} from '@angu
 import * as M from 'materialize-css/dist/js/materialize';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 declare var $: any;
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +12,7 @@ declare var $: any;
 export class NavBarComponent implements OnInit, AfterViewInit {
 
 
-  constructor(private elRef: ElementRef, private router: Router, private auth: AuthService) {
+  constructor(private elRef: ElementRef, private router: Router, private auth: AuthService, public inter: InternatinonalizationService) {
   }
 
   ngOnInit() {

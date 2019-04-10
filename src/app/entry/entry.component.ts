@@ -2,6 +2,7 @@ import { Entry } from './../objects/entry';
 import { Component, OnInit, Input,  Output ,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 
 @Component({
   selector: 'app-entry',
@@ -13,7 +14,7 @@ export class EntryComponent implements OnInit {
   @Output() entrySelected: EventEmitter<any> = new EventEmitter();
 
   isSelected = '';
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService, public inter: InternatinonalizationService) { }
 
   ngOnInit() {
   }

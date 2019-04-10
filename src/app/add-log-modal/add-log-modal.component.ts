@@ -1,3 +1,4 @@
+import { InternatinonalizationService } from './../services/internatinonalization.service';
 import { EntryService } from './../services/entry.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, EventEmitter, Input, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
@@ -18,7 +19,7 @@ export class AddLogModalComponent implements OnInit, AfterViewInit {
     logTags: new FormControl('')
   });
 
-  constructor(private entryService: EntryService, private elRef: ElementRef) { }
+  constructor(private entryService: EntryService, private elRef: ElementRef, public inter: InternatinonalizationService) { }
 
   ngOnInit() {
   }
@@ -47,7 +48,7 @@ export class AddLogModalComponent implements OnInit, AfterViewInit {
 
       this.entryService.addEntry(entry).subscribe(res => {
         this.closeModal();
-        M.toast({html: 'gg wp'});
+        M.toast({html: this.inter.labels.addModal.toaster});
       }, err => {
         this.closeModal();
       });

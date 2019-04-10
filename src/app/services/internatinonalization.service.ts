@@ -85,7 +85,7 @@ export class InternatinonalizationService {
      }
   };
 
-  labels = this.engLabels;
+  public labels = this.roLabels;
 
   constructor() { }
 

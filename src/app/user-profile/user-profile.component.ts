@@ -3,6 +3,7 @@ import { EntryService } from './../services/entry.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import * as M from 'materialize-css/dist/js/materialize';
 import { AuthService } from '../services/auth.service';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -16,7 +17,8 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   privateEntries: Array<Entry>;
   publicEntries: Array<Entry>;
 
-  constructor(private entryService: EntryService, private elRef: ElementRef, private auth: AuthService) {
+  constructor(private entryService: EntryService, private elRef: ElementRef, private auth: AuthService,
+    public inter: InternatinonalizationService) {
     entryService.privateEntryAdded$.subscribe(entry => {
       this.privateEntries.push(entry);
     });

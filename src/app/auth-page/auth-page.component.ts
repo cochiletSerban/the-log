@@ -4,6 +4,7 @@ import { RegisterUser } from '../objects/registerUser';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUser } from '../objects/loginUser';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 declare var $:  any;
 @Component({
   selector: 'app-auth-page',
@@ -37,7 +38,7 @@ export class AuthPageComponent implements OnInit {
   doctor = false;
   showDoctorRegister = false;
   registerText = 'Register';
-  constructor(private auth: AuthService, private render: Renderer2, private router: Router) { }
+  constructor(private auth: AuthService, private render: Renderer2, private router: Router, public inter: InternatinonalizationService) { }
 
 
   ngOnInit() {

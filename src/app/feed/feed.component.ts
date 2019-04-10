@@ -4,6 +4,7 @@ import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css/dist/js/materialize';
 import { AuthService } from '../services/auth.service';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -15,7 +16,7 @@ export class FeedComponent implements OnInit, AfterViewInit {
   searchText: string;
   selected = false;
   constructor(private entryService: EntryService, private router: Router,
-    private elRef: ElementRef, private auth: AuthService) {
+    private elRef: ElementRef, private auth: AuthService, public inter: InternatinonalizationService) {
     entryService.feedEntryAdded$.subscribe(entry => {
       this.allEntries.push(entry);
     });
@@ -45,13 +46,13 @@ export class FeedComponent implements OnInit, AfterViewInit {
         return false;
       }
     }
-  
+
     get isManager() {
       // if (this.router.url === '/manager-profile') {
       //   return true;
       // }
       // return false;
-  
+
       if (this.auth.getUserDetailes().role === 'manager') {
         return true;
       } else {

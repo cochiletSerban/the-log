@@ -1,5 +1,5 @@
 <div class="row" *ngIf="!hide && this.auth.isLogedIn()">
-  <div class="col s12 {{this.auth.getUserDetailes().role === 'admin' ? 'offset-m8 offset-l10' : ''}} m4 l2">
+  <div class="col s12 offset-m8 offset-l10 m4 l2">
     <div class="chatTitleBar" (click)="openChat()">
       {{this.auth.getUserDetailes().role === 'admin' ? 'Answer a question' : 'Ask a question'}}
     </div>

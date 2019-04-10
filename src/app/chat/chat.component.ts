@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 
 @Component({
   selector: 'app-chat',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
   loading = true;
-  constructor(private router: Router) {
+  constructor(private router: Router, public inter: InternatinonalizationService) {
 
   }
 

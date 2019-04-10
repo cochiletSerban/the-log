@@ -7,7 +7,7 @@
         <div class="col s12 center-align">
           <div class="row">
             <h5>
-              Add a new entry
+              {{inter.labels.addModal.modalTitle}}
             </h5>
             <div class="col s6 push-s3 hr"></div>
           </div>
@@ -20,21 +20,21 @@
           <div class="row">
             <div class="input-field col s12">
               <input id="title" type="text" formControlName="logTitle" [ngClass]="{'invalid': isTitleInvalid, 'valid': isTitleValid}">
-              <label for="title">Entry Title</label>
+              <label for="title">{{inter.labels.addModal.title}}</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
               <textarea id="textarea1" class="materialize-textarea" [ngClass]="{'invalid': isContentInvalid, 'valid': isContentValid}"   formControlName="logContent"></textarea>
-              <label for="textarea1">Entry content</label>
+              <label for="textarea1">{{inter.labels.addModal.content}}</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
               <input id="tags" type="text"   formControlName="logTags">
-              <label for="tags">Entry tags</label>
+              <label for="tags">{{inter.labels.addModal.tags}}</label>
             </div>
           </div>
 
@@ -45,11 +45,11 @@
 
         <div class="col s6 m4">
           <button class="btn  width modal-action modal-close waves-effect waves-light"
-            (click)="closeModal()">Cancel</button>
+            (click)="closeModal()">{{inter.labels.addModal.cancel}}</button>
         </div>
-        
+
         <div class="col s6 m4 offset-m4">
-          <button class="btn width waves-effect waves-light" (click)="addEntry()" [disabled]='!isEntryValid' >Add entry</button>
+          <button class="btn width waves-effect waves-light" (click)="addEntry()" [disabled]='!isEntryValid' >{{inter.labels.addModal.submit}}</button>
         </div>
 
 

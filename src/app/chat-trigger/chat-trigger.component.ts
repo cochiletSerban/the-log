@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router,  NavigationStart, NavigationEnd } from '@angular/router';
+import { InternatinonalizationService } from '../services/internatinonalization.service';
 
 @Component({
   selector: 'app-chat-trigger',
@@ -11,7 +12,7 @@ export class ChatTriggerComponent implements OnInit {
   hide = false;
   chatTitle = 'Ask us a question';
 
-  constructor(private router: Router, public auth: AuthService) {
+  constructor(private router: Router, public auth: AuthService, public inter: InternatinonalizationService) {
     router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event: NavigationEnd) => {
@@ -25,8 +26,10 @@ export class ChatTriggerComponent implements OnInit {
    }
 
   ngOnInit() {
-    if (this.auth.getUserDetailes().role === 'admin') {
-      this.chatTitle = 'Answer a question';
+    if(this.auth.isLogedIn()) {
+      if (this.auth.getUserDetailes().role === 'admin') {
+        this.chatTitle = 'Answer a question';
+      }
     }
   }
 

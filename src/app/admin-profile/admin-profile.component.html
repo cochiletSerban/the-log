@@ -6,7 +6,7 @@
       <div class="col s12">
         <img src="../../assets/img/tools.png" class="responsive-img" width="70px" alt="">
       </div>
-          <h5> Administrator </h5>
+          <h5> {{auth.getUserDetailes()?.username}} </h5>
       </div>
 
   </div>
@@ -25,9 +25,9 @@
                 <img src="../../assets/img/cross.png" alt="" class="circle" style="width:20px;">
                 <span class="title" style="font-size: 25px;">Manager</span>
                 <div class="switch" style="float: right;">
-                    <label>Off
+                    <label>{{inter.labels.adminProfile.swicthOff}}
                       <input type="checkbox" [formControlName]="i" [id]="i">
-                        <span class="lever"></span>On
+                        <span class="lever"></span>{{inter.labels.adminProfile.switchOn}}
                     </label>
                 </div>
                 <br>
@@ -37,6 +37,6 @@
           </li>
         </ul>
       </div>
-      <button type="submit" class="btn btn-light centered-btn" >Submit</button>
+      <button type="submit" class="btn btn-light centered-btn" >{{inter.labels.adminProfile.submit}}</button>
     </form>
   </div>
