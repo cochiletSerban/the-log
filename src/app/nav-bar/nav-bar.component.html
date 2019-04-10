@@ -6,18 +6,18 @@
         <a [routerLink]="['/feed']" href="#!" class="brand-logo"><img src="../../assets/img/drop.png"  width="50" alt="" srcset=""></a>
         <a  data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li  routerLinkActive="active" ><a [routerLink]="['/feed']" *ngIf="!isManager && !isAdmin"   >Board</a></li>
-          <li  routerLinkActive="active" ><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager"  >My entries</a></li>
-          <li><a (click)="auth.logout()">Logout</a></li>
+          <li  routerLinkActive="active" ><a [routerLink]="['/feed']" *ngIf="!isManager && !isAdmin"   >{{inter.labels.nav.board}}</a></li>
+          <li  routerLinkActive="active" ><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager"  >{{inter.labels.nav.myEntries}}</a></li>
+          <li><a (click)="auth.logout()">{{inter.labels.nav.logout}}</a></li>
         </ul>
       </div>
     </nav>
   </div>
 
   <ul class="sidenav"  id="mobile-demo">
-    <li routerLinkActive="active"><a [routerLink]="['/feed']"   >Feed</a></li>
-    <li routerLinkActive="active" ><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager"  >My Entries</a></li>
-    <li><a (click)="auth.logout()">Logout</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/feed']"   >{{inter.labels.nav.board}}</a></li>
+    <li routerLinkActive="active" ><a [routerLink]="['/user-profile']" *ngIf="!isAdmin && !isManager"  >{{inter.labels.nav.myEntries}}</a></li>
+    <li><a (click)="auth.logout()">{{inter.labels.nav.logout}}</a></li>
   </ul>
 
 </div>

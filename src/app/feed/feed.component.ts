@@ -72,7 +72,7 @@ export class FeedComponent implements OnInit, AfterViewInit {
 
   deleteItems() {
     this.entryService.deleteEntries(this.selectedEntries).subscribe(res => {
-      M.toast({html: 'Items deleted succesfully'});
+      M.toast({html: this.inter.labels.feed.toaster});
       this.selectedEntries = [];
     });
     this.modalInstance.close();

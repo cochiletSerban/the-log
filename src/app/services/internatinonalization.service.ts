@@ -41,7 +41,12 @@ export class InternatinonalizationService {
       board: 'Board',
       myEntries: 'My entries',
       logout: 'Logout'
-     }
+     },
+     chat: {
+      userTitle: 'Ask a question',
+      adminTitle: 'Answer user questions',
+      close: 'close chat'
+    }
   };
 
   public roLabels = {
@@ -82,6 +87,11 @@ export class InternatinonalizationService {
       board: 'Intrari publice',
       myEntries: 'Intrarile mele',
       logout: 'delogare'
+     },
+     chat: {
+       userTitle: 'Contacteaza-ne',
+       adminTitle: 'Raspunde utilizatorilor',
+       close: 'inchide chat'
      }
   };
 
