@@ -32,6 +32,7 @@ import { SearchComponent } from './search/search.component';
 import { EntryFilterPipe } from './entry-filter.pipe';
 import { ChatComponent } from './chat/chat.component';
 import { ChatTriggerComponent } from './chat-trigger/chat-trigger.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
     SearchComponent,
     EntryFilterPipe,
     ChatComponent,
-    ChatTriggerComponent
+    ChatTriggerComponent,
+    FooterComponent
   ],
   imports: [
     // MaterializeModule,
