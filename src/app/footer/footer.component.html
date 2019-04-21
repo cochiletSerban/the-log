@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        <h5 class="white-text">Site Map</h5>
-        <p class="grey-text text-lighten-4">Click the links bellow to go to the desired page</p>
+        <h5 class="white-text">{{inter.labels.footer.title}}</h5>
+        <p class="grey-text text-lighten-4">{{inter.labels.footer.desc}}</p>
       </div>
       <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
+        <h5 class="white-text">{{inter.labels.footer.links}}</h5>
         <ul>
           <li *ngFor="let path of router.config"><a class="grey-text text-lighten-3" [routerLink]="[path.path]">{{path.path}}</a></li>
         </ul>

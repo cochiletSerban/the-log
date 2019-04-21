@@ -44,8 +44,7 @@ export class AuthPageComponent implements OnInit {
   ngOnInit() {
     if (this.auth.isLogedIn()) {
       console.log('yes');
-      
-      this.router.navigate(['/user-profile']);
+      this.router.navigate(['/feed']);
     }
 
     $('.tabs').tabs();

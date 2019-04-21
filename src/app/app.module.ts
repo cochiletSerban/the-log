@@ -35,11 +35,12 @@ import { ChatTriggerComponent } from './chat-trigger/chat-trigger.component';
 import { FooterComponent } from './footer/footer.component';
 import { ManagerGuardService } from './services/manager-guard.service';
 import { AdminGuardService } from './services/admin-guard.service';
+import { UserGuardService } from './services/user-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: AuthPageComponent },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService, UserGuardService] },
   { path: 'manager-profile', component: DoctorProfileComponent, canActivate: [AuthGuardService , ManagerGuardService]},
   { path: 'admin-profile', component : AdminProfileComponent, canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'feed', component : FeedComponent, canActivate: [AuthGuardService]},
@@ -77,8 +78,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PostDonationService, GetBgService, AuthGuardService, AdminService, EntryService,
-     AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, GetUserDataService, InternatinonalizationService ],
+  providers: [PostDonationService, GetBgService, AuthGuardService,
+    ManagerGuardService, UserGuardService, AdminService, AdminGuardService, EntryService,
+    AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, GetUserDataService, InternatinonalizationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

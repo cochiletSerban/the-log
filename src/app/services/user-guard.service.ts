@@ -3,12 +3,12 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AdminGuardService implements CanActivate {
+export class UserGuardService implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-     if (this.auth.getUserDetailes().role === 'admin') {
+     if (this.auth.getUserDetailes().role === 'user') {
        return true;
      } else {
       //this.router.navigate(['/']);

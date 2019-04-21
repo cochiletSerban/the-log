@@ -40,13 +40,19 @@ export class InternatinonalizationService {
      nav: {//
       board: 'Board',
       myEntries: 'My entries',
-      logout: 'Logout'
+      logout: 'Logout',
+      admin: 'Manage users'
      },
      chat: {
       userTitle: 'Ask a question',
       adminTitle: 'Answer user questions',
       close: 'close chat'
-    }
+    },
+    footer: {
+      title: 'Site Map',
+      desc: 'Click the links bellow to go to the desired page',
+      links: 'Links'
+     }
   };
 
   public roLabels = {
@@ -86,12 +92,18 @@ export class InternatinonalizationService {
      nav: {
       board: 'Intrari publice',
       myEntries: 'Intrarile mele',
-      logout: 'delogare'
+      logout: 'delogare',
+      admin: 'administrare utilizatori'
      },
      chat: {
        userTitle: 'Contacteaza-ne',
        adminTitle: 'Raspunde utilizatorilor',
        close: 'inchide chat'
+     },
+     footer: {
+      title: 'Harta site',
+      desc: 'Dați clic pe link-urile de mai jos pentru a accesa pagina dorită',
+      links: 'Linkuri'
      }
   };
 

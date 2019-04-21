@@ -11,7 +11,7 @@ export class ManagerGuardService implements CanActivate {
      if (this.auth.getUserDetailes().role === 'manager') {
        return true;
      } else {
-      this.router.navigate(['/']);
+      return false;
      }
   }
 

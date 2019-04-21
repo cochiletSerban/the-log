@@ -12,22 +12,17 @@ declare var $: any;
 export class NavBarComponent implements OnInit, AfterViewInit {
 
 
-  constructor(private elRef: ElementRef, private router: Router, private auth: AuthService, public inter: InternatinonalizationService) {
+  constructor(private elRef: ElementRef, private router: Router, public  auth: AuthService, public inter: InternatinonalizationService) {
   }
 
   ngOnInit() {
-    $(window).scroll(function(){
-
+    $(window).scroll(function() {
       if ($(window).scrollTop() >= 1) {
-        console.log("sdf");
-
-         $('nav').removeClass('hide-header');
+          $('nav').removeClass('hide-header');
+      } else {
+          $('nav').addClass('hide-header');
       }
-      else {
-         $('nav').addClass('hide-header');
-      }
-  });
-
+    });
   }
 
   get hideNav() {
@@ -39,11 +34,10 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   }
 
   get isAdmin() {
-    // if (this.router.url === '/admin-profile') {
-    //   return true;
-    // }
-    // return false;
-    if(!this.auth.isLogedIn()) return false;
+
+    if (!this.auth.isLogedIn()) {
+      return false;
+    }
     if (this.auth.getUserDetailes().role === 'admin') {
       return true;
     } else {
@@ -52,11 +46,9 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   }
 
   get isManager() {
-    // if (this.router.url === '/manager-profile') {
-    //   return true;
-    // }
-    // return false;
-    if(!this.auth.isLogedIn()) return false;
+    if (!this.auth.isLogedIn()) {
+      return false;
+    }
     if (this.auth.getUserDetailes().role === 'manager') {
       return true;
     } else {
