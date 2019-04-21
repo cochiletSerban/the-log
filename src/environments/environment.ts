@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://storycloud.herokuapp.com/'
+  apiUrl: 'https://storycloud.herokuapp.com'
 };

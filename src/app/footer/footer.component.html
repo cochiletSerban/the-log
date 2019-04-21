@@ -8,7 +8,7 @@
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
         <ul>
-          <li *ngFor="let path of router.confing"><a class="grey-text text-lighten-3"   href="#!">{{path}}</a></li>
+          <li *ngFor="let path of router.config"><a class="grey-text text-lighten-3" [routerLink]="[path.path]">{{path.path}}</a></li>
         </ul>
       </div>
     </div>
@@ -16,7 +16,6 @@
   <div class="footer-copyright">
     <div class="container">
     © 2019 StroyCloud
-    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
     </div>
   </div>
 </footer>

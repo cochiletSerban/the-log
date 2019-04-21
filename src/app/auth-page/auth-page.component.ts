@@ -42,6 +42,12 @@ export class AuthPageComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.auth.isLogedIn()) {
+      console.log('yes');
+      
+      this.router.navigate(['/user-profile']);
+    }
+
     $('.tabs').tabs();
     this.loginForm = new FormGroup({
       'password' : new FormControl(null, [Validators.required]),

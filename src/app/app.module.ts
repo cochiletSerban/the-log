@@ -33,13 +33,15 @@ import { EntryFilterPipe } from './entry-filter.pipe';
 import { ChatComponent } from './chat/chat.component';
 import { ChatTriggerComponent } from './chat-trigger/chat-trigger.component';
 import { FooterComponent } from './footer/footer.component';
+import { ManagerGuardService } from './services/manager-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: AuthPageComponent },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'manager-profile', component: DoctorProfileComponent, canActivate: [AuthGuardService]},
-  { path: 'admin-profile', component : AdminProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'manager-profile', component: DoctorProfileComponent, canActivate: [AuthGuardService , ManagerGuardService]},
+  { path: 'admin-profile', component : AdminProfileComponent, canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'feed', component : FeedComponent, canActivate: [AuthGuardService]},
   { path: 'chat', component : ChatComponent, outlet: 'chat'}
 ];
