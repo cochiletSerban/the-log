@@ -10,4 +10,5 @@ export class AppComponent implements OnInit {
   title = 'app';
   ngOnInit() {
   }
+  constructor(public router: Router) {}
 }
