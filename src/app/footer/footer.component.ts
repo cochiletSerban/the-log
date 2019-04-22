@@ -30,6 +30,8 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
+  ngOnInit() {}
+
   ngOnDestroy(): void {
     $('html, body').css('height', '100%');
     $('body').css('padding-bottom', 'initial');
